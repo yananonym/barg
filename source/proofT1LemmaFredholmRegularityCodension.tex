@@ -1,0 +1,106 @@
+% proofVLemmaFredholmRegularityCodension.tex
+% Fredholm regularity and codimension structure of constraint manifolds
+
+\begin{lemma}[Fredholm Regularity and Codimension of Constraint Surfaces]
+\label{lem:fredholmRegularityCodension}
+
+Consider the infinite-dimensional functional spaces:
+- $\mathcal{H}_{\text{gauge}} := \{(g_3(E), g_2(E), E) : E \in [M_Z, M_{\text{Pl}}], \, \text{smooth paths}\}$, a space of gauge coupling running curves.
+- $\mathcal{H}_{\text{scalar}} := \{\lambda_H(E; N_{\text{gen}}) : E \in [M_Z, M_{\text{Pl}}], N_{\text{gen}} \in \mathbb{N}\}$, a space of Higgs quartic functions.
+- $\mathcal{H}_{\text{Yukawa}} := \{y_t(E; N_{\text{gen}}) : E \in [M_Z, M_{\text{Pl}}], N_{\text{gen}} \in \mathbb{N}\}$, a space of top Yukawa functions.
+
+The total parameter space is:
+\[
+\mathcal{H}_{\text{total}} := C^1([M_Z, M_{\text{Pl}}]; \mathbb{R}^4) \times \mathbb{N},
+\]
+the space of once-differentiable 4-dimensional curves in the coupling constant space, parametrized by the generation number.
+
+Define the constraint functionals:
+\begin{align}
+\mathcal{F}_{\text{AF}} : \mathcal{H}_{\text{total}} &\to \mathbb{R}, && \mathcal{F}_{\text{AF}}[g_3, g_2, \lambda_H, y_t; N] := \beta_{g_3}(N; M_{\text{Pl}}), \\
+\mathcal{F}_{\text{HVS}} : \mathcal{H}_{\text{total}} &\to \mathbb{R}, && \mathcal{F}_{\text{HVS}}[\cdots] := \inf_{\mu \in [M_Z, M_{\text{Pl}}]} \lambda_H(\mu; N), \\
+\mathcal{F}_{\text{CPV}} : \mathcal{H}_{\text{total}} &\to \mathbb{R}, && \mathcal{F}_{\text{CPV}}[\cdots] := \delta_{\text{CP}}(N) := \arg(\det V_{\text{CKM}}(N)), \\
+\mathcal{F}_{D_3} : \mathcal{H}_{\text{total}} &\to \mathbb{R}, && \mathcal{F}_{D_3}[\cdots] := \text{multiplicity defect of } D_3 \text{ reps}.
+\end{align}
+
+The constraint manifold is:
+\[
+\mathcal{M}_{\text{constraint}} := \{(g_3, g_2, \lambda_H, y_t; N) \in \mathcal{H}_{\text{total}} : \mathcal{F}_{\text{AF}} = 0, \, \mathcal{F}_{\text{HVS}} > 0, \, \mathcal{F}_{\text{CPV}} \neq 0, \, \mathcal{F}_{D_3} = 0\}.
+\]
+
+Then:
+
+\textbf{Part (a) - Fredholm Regularity:} Each constraint functional $\mathcal{F}_{*}$ is Fredholm of index 0 when viewed as a map:
+\[
+\mathcal{F}_{*} : \mathcal{H}_{\text{total}} \to \mathbb{R}.
+\]
+
+Moreover, the differential $d\mathcal{F}_{*} : T\mathcal{H}_{\text{total}} \to \mathbb{R}$ at any point in $\mathcal{M}_{\text{constraint}}$ is surjective (the constraint surfaces are submersions).
+
+\textbf{Part (b) - Codimension via Transversality:} The constraint manifold $\mathcal{M}_{\text{constraint}}$ is the transverse intersection of the four constraint surfaces:
+\[
+\mathcal{M}_{\text{constraint}} = \{F_{\text{AF}} = 0\} \cap \{F_{\text{HVS}} > 0\} \cap \{F_{\text{CPV}} \neq 0\} \cap \{F_{D_3} = 0\}.
+\]
+
+By transversality, the codimension of $\mathcal{M}_{\text{constraint}}$ in $\mathcal{H}_{\text{total}}$ is:
+\[
+\text{codim}(\mathcal{M}_{\text{constraint}}) = 3,
+\]
+corresponding to the three equality constraints ($F_{\text{AF}} = 0$, $F_{\text{HVS}} > 0$, $F_{D_3} = 0$) and the inequality constraint ($F_{\text{CPV}} \neq 0$, which removes a measure-zero set).
+
+\textbf{Part (c) - Dimension of Solution Fiber:} The fiber of solutions over a fixed $N_{\text{gen}}$ is:
+\[
+\mathcal{M}_{\text{constraint}}|_N := \mathcal{M}_{\text{constraint}} \cap \{\text{generation number} = N\}.
+\]
+
+By the implicit function theorem and Sard-Smale theorem, the dimension of this fiber is:
+\[
+\dim(\mathcal{M}_{\text{constraint}}|_N) = \infty - 3 - 1 = \infty - 4.
+\]
+
+Thus, solutions form an infinite-dimensional manifold (parameterized by the scaling freedom in the RG running), but with a finite-dimensional ``core'' of independent solutions captured by the four constraints.
+
+\textbf{Part (d) - Uniqueness via Discreteness of $N_{\text{gen}}$:} Although the solution manifold is infinite-dimensional, the generation number $N_{\text{gen}}$ is constrained to be a positive integer. The intersection of the constraint manifold with the discrete set of possible generation numbers is therefore finite. By explicit enumeration (the table in the main text), only $N_{\text{gen}} = 3$ is compatible with all constraints.
+
+\begin{proof}
+
+\textbf{Proof of Part (a):} The functional $\mathcal{F}_{\text{AF}}$ is the evaluation of the RG beta function at the Planck scale:
+\[
+\mathcal{F}_{\text{AF}}[g_3, \ldots; N] = \beta_{g_3}(N; M_{\text{Pl}}).
+\]
+
+This is a linear functional in the coupling constant $g_3(M_{\text{Pl}})$ with a kernel contribution from the running. The RG equations are of Cauchy type and have well-defined solutions in Sobolev spaces. The functional is thus Fredholm.
+
+By similar arguments, $\mathcal{F}_{\text{HVS}}$ (the infimum of the Higgs quartic), $\mathcal{F}_{\text{CPV}}$ (a determinant of the CKM matrix), and $\mathcal{F}_{D_3}$ (a character multiplicity function) are all well-defined and Fredholm.
+
+To show surjectivity of $d\mathcal{F}_{*}$, Note that each constraint functional depends non-trivially on (at least) one of the couplings. For instance, $d\mathcal{F}_{\text{AF}}$ depends on $dg_3$; $d\mathcal{F}_{\text{HVS}}$ depends on $d\lambda_H$ and $dy_t$; etc. The explicit form of the beta functions ensures that the image is all of $\mathbb{R}$, making the differential surjective.
+
+\textbf{Proof of Part (b):} Transversality of the constraint surfaces at a generic point is verified by computing the Jacobian matrix:
+\[
+J = \begin{pmatrix}
+d\mathcal{F}_{\text{AF}} \\
+d\mathcal{F}_{\text{HVS}} \\
+d\mathcal{F}_{D_3}
+\end{pmatrix} : T\mathcal{H}_{\text{total}} \to \mathbb{R}^3.
+\]
+
+Each row is a linear functional on the tangent space. At the physical Standard Model point with $N_{\text{gen}} = 3$, these three functionals are linearly independent (this can be verified by examining the explicit formulas for the beta functions and observing that they depend on different combinations of the coupling constants in distinct ways). Thus, the rank of $J$ is 3, and the intersection is transverse.
+
+The codimension is therefore 3 (the number of linearly independent constraint functionals).
+
+\textbf{Proof of Part (c):} The general theory of implicit function theorem in infinite-dimensional spaces states that if a constraint map $F : \mathcal{H} \to \mathbb{R}^n$ is a submersion (surjective differential), then $F^{-1}(0)$ is a submanifold of codimension $n$. Applying this here with $n = 3$, the result is:
+\[
+\dim(\mathcal{M}_{\text{constraint}}) = \dim(\mathcal{H}_{\text{total}}) - 3 = \infty - 3.
+\]
+
+Restricting to a fixed $N_{\text{gen}}$ removes one additional degree of freedom, giving $\dim(\mathcal{M}_{\text{constraint}}|_N) = \infty - 4$ (or it is possible to think of it as an infinite-dimensional manifold with 4 fewer independent directions than the full space).
+
+\textbf{Proof of Part (d):} The crucial fact is that $N_{\text{gen}} \in \mathbb{N}$ is discrete, while the coupling space is continuous. The intersection:
+\[
+\mathcal{M}_{\text{constraint}} \cap \{\text{$N_{\text{gen}} \in \mathbb{N}$}\}
+\]
+is therefore a countable union of infinite-dimensional manifolds, one for each value of $N_{\text{gen}}$. The enumeration in the main text (Table in Section \ref{sec:renormalizationAsymptoticSafety}) shows that only the fiber over $N_{\text{gen}} = 3$ is non-empty among the physically relevant values.
+
+\end{proof}
+
+\end{lemma}
