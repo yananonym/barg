@@ -1,0 +1,17 @@
+% proofLemSelfAdjointnessAndSpectralBoundedness.tex
+% Proof content
+
+\textbf{Proof.}
+\textbf{Step 1 (Self-adjointness):} By \ref{thm:laplacianProperties}, $A = -\Delta_\mu$ is self-adjoint and negative definite. The potential $W(x) = V''(|\psi_0|^2)$ satisfies:
+\begin{itemize}
+\item $W \in L^\infty(X)$ by Sobolev embedding $\psi_0 \in H^{1,2} \hookrightarrow L^\infty$ (Lemma \ref{thm:eigenfunctionRegularity}) and polynomial growth (V3).
+\item $W(x) \geq \lambda_0 > 0$ by strict convexity (V2).
+\end{itemize}
+
+Since $W$ is bounded and $A$ is self-adjoint, their sum $H = -A + W$ is self-adjoint on $\mathrm{Dom}(A)$ by the \cite{kato1995perturbation} theorem (the $W$-perturbation is $A$-bounded with relative bound zero).
+
+\textbf{Step 2 (Lower bound):} For $\psi \in \mathrm{Dom}(A)$:
+\[
+\langle \psi, H\psi \rangle = \langle \psi, (-A)\psi \rangle + \langle \psi, W\psi \rangle \geq 0 + \lambda_0 \|\psi\|^2 = \lambda_0 \|\psi\|^2.
+\]
+Thus $\sigma(H) \subset [\lambda_0, \infty)$ with $E_{\min} = \lambda_0 > 0$. \qed
