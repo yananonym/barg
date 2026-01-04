@@ -1,0 +1,25 @@
+% Part of sectionGMetricEmergence.tex
+\subsection{Timing of Metrization: From $d_X$ to $d_g$}
+\label{subsec:timingOfMetrizationFromDXToDG}
+
+\begin{remark}[Clear Logical Ordering: From Original Metric to Emergent Riemannian Metric]
+\label{rem:metrizationTiming}
+The emergence of Riemannian structure occurs in a well-defined logical sequence, with all dependencies running forward (no backward references):
+
+\begin{enumerate}
+\item \textbf{Starting Point (Stage 1):} Axiom \ref{ax:polishSpace} provides the original metric $d_X$ on the compact space $X$, equipped with the measure $\mu$ and satisfying Ahlfors regularity and Poincaré inequality.
+
+\item \textbf{Dirichlet Form Construction (Stage 2):} From the quadratic form $\mathcal{Q}$ (constructed via Bregman divergence polarization at the vacuum) and the gradient term (via minimal upper gradient $\nabla_{\min}$, which depends only on $d_X$ and $\mu$), the Dirichlet form $\mathcal{E}$ is constructed. See Definition \ref{def:dirichletFormTwoStage} for explicit non-circular two-stage construction.
+
+\item \textbf{Spectral Analysis (Stage 3):} The Dirichlet form generates the Laplacian operator $A = -\Delta_\mu$ via Lax-Milgram, which has discrete spectrum with eigenfunctions $\{e_k\}$ that are Hölder continuous by Theorem \ref{thm:eigenfunctionRegularity}.
+
+\item \textbf{Carre du Champ and Metric Tensor (Stage 4):} The Carre du Champ operator is defined via minimal upper gradient of eigenfunctions (Definition \ref{def:carreDuChamp}). This induces the metric tensor $g_{\mu\nu}(x) = \nabla_{\min} e_\mu(x) \cdot \nabla_{\min} e_\nu(x)$.
+
+\item \textbf{Riemannian Distance $d_g$ (Stage 5):} From the metric tensor, the Riemannian distance $d_g$ is defined. Theorem \ref{thm:metricFromCarre}(4) establishes bi-Lipschitz equivalence: $C^{-1} d_X(x, y) \leq d_g(x, y) \leq C d_X(x, y)$.
+
+\item \textbf{Clarification on $d_X$ vs $d_g$:} The two metrics are mutually compatible: $d_g$ is a refinement of $d_X$ (H\"older-smooth in local coordinates), not a replacement. The topologies are identical, but $d_g$ carries the additional geometric information encoded in the spectral structure of the Dirichlet form.
+\end{enumerate}
+
+This logical ordering is strictly non-circular: each step depends only on previous steps, not on future ones. The key innovation is the two-stage construction of the Dirichlet form: pre-spectral definition (Stage 2) uses only Axiom 1, and post-spectral Carre du Champ (Stage 4) uses eigenfunctions computed in Stage 3.
+\end{remark}
+

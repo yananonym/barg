@@ -1,0 +1,301 @@
+\subsection{Coherent State Basis and Quantum-Classical Bridge}
+\label{subsec:coherentStateBasisAndQuantumClassicalBridge}
+
+\begin{definition}[Coherent State Basis from Spectral Data]
+\label{def:coherentStates}
+For each point $x \in X$ and mode truncation $N \in \mathbb{N}$, define the coherent state:
+\begin{equation}
+|x, N\rangle := \exp\left(-\sum_{\mu=0}^{N-1} \sqrt{|\lambda_\mu|} e_\mu(x) \hat{a}_\mu^\dagger\right) |0\rangle,
+\end{equation}
+where:
+\begin{itemize}
+\item $\hat{a}_\mu^\dagger, \hat{a}_\mu$ are creation and annihilation operators for mode $\mu$ satisfying $[\hat{a}_\mu, \hat{a}_\nu^\dagger] = \delta_{\mu\nu}$ and $[\hat{a}_\mu, \hat{a}_\nu] = 0$.
+\item $|0\rangle$ is the Fock vacuum: $\hat{a}_\mu |0\rangle = 0$ for all $\mu$.
+\item $e_\mu$ are the normalized eigenfunctions from Theorem \ref{thm:laplacianProperties}.
+\item $\lambda_\mu < 0$ are the eigenvalues.
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[Mollification and Convergence Criteria for Coherent States]
+\label{lem:mollifierCoherentStates}
+
+For each eigenfunction $e_\mu$ from Theorem \ref{thm:laplacianProperties}, define the mollified version using the heat kernel:
+\begin{equation}
+e_\mu^{(\epsilon)}(x) := (T_\epsilon e_\mu)(x) := \int_X p_\epsilon(x, y) e_\mu(y) d\mu(y),
+\end{equation}
+where $p_\epsilon(x, y) := p_\epsilon(x, y)$ is the heat kernel from Theorem \ref{thm:heatKernelExistence} at time $t = \epsilon$.
+
+\begin{enumerate}[label=(\roman*)]
+
+\item \textbf{Heat Kernel Bounds.} By Theorem \ref{thm:heatKernelAsymptotics}, 
+\begin{equation}
+p_\epsilon(x, y) \leq C \epsilon^{-Q/2} \exp\left(-c \frac{d_X(x,y)^2}{\epsilon}\right),
+\end{equation}
+where $Q$ is the Ahlfors regularity dimension.
+
+\item \textbf{Convergence of Mollified Eigenfunctions.} For $e_\mu \in \Dom(A) \subset C^{0,\alpha}(X)$ (by Lemma \ref{lem:domainDensity}):
+\begin{enumerate}
+\item[(a)] $e_\mu^{(\epsilon)} \in C^\infty$ (smooth).
+\item[(b)] $\|e_\mu^{(\epsilon)} - e_\mu\|_{L^2(X, \mu)} \to 0$ as $\epsilon \to 0^+$.
+\item[(c)] $\|\nabla_{\min} e_\mu^{(\epsilon)} - \nabla_{\min} e_\mu\|_{L^2(X, \mu)} \to 0$ as $\epsilon \to 0^+$.
+\end{enumerate}
+
+\item \textbf{Mollified Coherent States.} Replace eigenfunctions in Definition \ref{def:coherentStates} with:
+\begin{equation}
+|x, N, \epsilon\rangle := \exp\left(-\sum_{\mu=0}^{N-1} \sqrt{|\lambda_\mu|} e_\mu^{(\epsilon)}(x) \hat{a}_\mu^\dagger\right) |0\rangle.
+\end{equation}
+
+\item \textbf{Quantitative Convergence Bounds.} By Theorem \ref{thm:eigenfunctionRegularity}:
+\begin{equation}
+\|e_\mu^{(\epsilon)} - e_\mu\|_\infty \leq C_\mu \epsilon^{\min(\alpha, 1)},
+\end{equation}
+where $\alpha = 1 - Q/4$ is the Holder exponent. Therefore:
+\begin{equation}
+\||x, N, \epsilon\rangle - |x, N\rangle\| \leq C_N \epsilon^{\min(\alpha, 1)} \to 0 \quad \text{as } \epsilon \to 0^+.
+\end{equation}
+
+\item \textbf{Regularized Resolution of Identity.} The mollified coherent states satisfy:
+\begin{equation}
+\int_X |x, N, \epsilon\rangle \langle x, N, \epsilon| d\mu(x) = \mathbb{I}_N^{(\epsilon)},
+\end{equation}
+where $\mathbb{I}_N^{(\epsilon)} \to \mathbb{I}_N$ strongly as $\epsilon \to 0^+$.
+
+\end{enumerate}
+
+This lemma establishes that the path integral can be defined rigorously via a limit of finite-dimensional approximations using mollified coherent states.
+
+\begin{proof}
+\input{proofM1LemmaMollifierCoherentStates}
+\end{proof}
+
+\end{lemma}
+
+\begin{theorem}[Properties of Coherent States]
+\label{thm:coherentStateProperties}
+The coherent states satisfy:
+
+\begin{enumerate}
+\item \textbf{Resolution of identity (overcomplete basis).} For fixed $N$:
+\begin{equation}
+\int_X |x, N\rangle \langle x, N| d\mu(x) = \mathbb{I}_N,
+\end{equation}
+where $\mathbb{I}_N$ is the identity on the $N$-mode Fock subspace.
+
+\item \textbf{Continuity in position.} The coherent states depend continuously on base point:
+\begin{equation}
+\||x, N\rangle - |y, N\rangle\| \leq C_N \sum_{\mu=0}^{N-1} \sqrt{|\lambda_\mu|} |e_\mu(x) - e_\mu(y)| \leq C_N' d_X(x, y)^\alpha,
+\end{equation}
+where $\alpha \in (0,1)$ is the Hölder exponent from Theorem \ref{thm:eigenfunctionRegularity}.
+
+\item \textbf{Classical limit (expectation values).} For field operator $\hat{\psi}(x) = \sum_\mu e_\mu(x) \hat{a}_\mu$:
+\begin{equation}
+\langle x, N | \hat{\psi}(y) | x, N \rangle = \sum_{\mu=0}^{N-1} e_\mu(y) \langle x, N | \hat{a}_\mu | x, N \rangle \to \psi_{\text{cl}}(y)
+\end{equation}
+as $N \to \infty$, where $\psi_{\text{cl}}$ is the classical field configuration localized at $x$.
+
+\item \textbf{Overlap formula.} For distinct points $x, y \in X$:
+\begin{equation}
+\langle x, N | y, N \rangle = \exp\left(-\frac{1}{2}\sum_{\mu=0}^{N-1} |\lambda_\mu| |e_\mu(x) - e_\mu(y)|^2\right),
+\end{equation}
+which decays with separation, encoding spatial localization.
+
+\item \textbf{Connection to spectral embedding.} The coherent state label space is naturally identified with the spectral embedding:
+\begin{equation}
+x \mapsto |x, N\rangle \quad \leftrightarrow \quad x \mapsto \Psi_N(x) = (\sqrt{|\lambda_0|} e_0(x), \ldots, \sqrt{|\lambda_{N-1}|} e_{N-1}(x)).
+\end{equation}
+
+The quantum Hilbert space structure emerges from the classical spectral embedding via canonical quantization.
+\end{enumerate}
+
+\begin{proof}
+\input{proofM1TheoremCoherentStateProperties}
+\end{proof}
+\end{theorem}
+
+\begin{remark}
+The coherent states provide the bridge between the emerged classical manifold structure and quantum field theory. The spectral embedding $\Psi_N: X \to \mathbb{R}^N$ from Theorem \ref{thm:spectralEmbedding} labels classical points, while the coherent states $|x, N\rangle$ provide corresponding quantum states. This realizes the manifold structure at the quantum level, enabling path integral quantization via integration over coherent state labels.
+\end{remark}
+
+\subsection{Euclidean Path Integral with Rigorous Cylindrical Approximation}
+\label{subsec:euclideanPathIntegralWithRigorousCylindrical}
+
+\begin{lemma}[Uniform Coercivity of Euclidean Action]
+\label{lem:uniformCoercivity}
+Let $S_E[\psi] = \int_0^\beta [\frac{1}{2}|\partial_\tau \psi|^2 + \mathcal{E}(\psi,\psi)] d\tau + \int_X V(|\psi|^2) d\mu$. Under Axiom 2 condition (V4), there exist constants $C, D > 0$ independent of mode truncation $N$ such that for all $\psi_N$ in the $N$-mode subspace $\mathcal{H}_N$:
+\begin{equation}
+S_E[\psi_N] \geq C \|\psi_N\|_{H^{1,2}([0,\beta] \times X)}^\alpha - D
+\end{equation}
+where $\alpha > 2$ is from condition (V4).
+
+\begin{proof}
+\input{proofM1LemmaUniformCoercivity}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Fernique Integrability for Gaussian Measure]
+\label{lem:ferniqueIntegrability}
+Let $\nu_{\mathcal{E}}$ be the Gaussian measure on $\mathcal{H}$ with covariance $C = (-A)^{-1}$. There exists $\gamma > 0$ such that:
+\[
+\int_{\mathcal{H}} \exp\left(\gamma \|\psi\|_{\mathcal{H}}^2\right) d\nu_{\mathcal{E}}[\psi] < \infty.
+\]
+
+Consequently, for any polynomial $P(\|\psi\|)$ and any $c > 0$:
+\[
+\int_{\mathcal{H}} P(\|\psi\|) \exp(-c\|\psi\|^{2\alpha}) d\nu_{\mathcal{E}}[\psi] < \infty \quad \text{for all } \alpha \geq 1.
+\]
+
+\begin{proof}
+\input{proofM1LemmaFerniqueIntegrability}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Fernique Integrability for Potential]
+\label{lem:ferniquePotential}
+Let $V$ satisfy conditions (V1)--(V4) with coercivity exponent $\alpha > 2$. 
+For the regularized Gaussian measure $\nu_\epsilon$ from 
+Lemma~\ref{lem:regularizedGaussianMeasure}, and any $p < \alpha$:
+\begin{equation}
+\sup_{\epsilon > 0} \int_{\mathcal{H}} \exp(c \|\psi\|^p) \, d\nu_\epsilon < \infty
+\end{equation}
+for sufficiently small $c > 0$ depending on $p, \alpha, Q$.
+
+\begin{proof}
+\input{proofM1LemmaFerniquePotential}
+\end{proof}
+\end{lemma}
+
+\begin{definition}[Euclidean Action]
+\label{def:euclideanAction}
+In Euclidean signature with imaginary time $\tau$:
+\begin{equation}
+S_E[\psi] := \int_0^\beta d\tau \int_X \left[\frac{1}{2}|\partial_\tau \psi|^2 + \mathcal{E}(\psi, \psi)\right] d\mu,
+\end{equation}
+where $\beta = 1/(k_B T)$ is inverse temperature and $\mathcal{E}$ is the Dirichlet form encoding spatial gradient energy.
+\end{definition}
+
+\begin{theorem}[Path Integral Construction with Complete Prokhorov Tightness and Uniform Limit Interchange]
+\label{thm:pathIntegralConstruction}
+The Euclidean path integral:
+\begin{equation}
+Z_E := \int \mathcal{D}[\psi] \exp(-S_E[\psi]/\hbar)
+\end{equation}
+converges via cylindrical approximation. The $N$-point correlation functions are well-defined with explicit uniform bounds guaranteeing valid interchange of limits.
+
+\begin{proof}
+\input{proofM1TheoremPathIntegralConstruction}
+\end{proof}
+\end{theorem}
+
+\begin{lemma}[Constructive Existence of Effective Measure]
+\label{lem:effectiveMeasureExistence}
+Let $S_E[\psi]$ be the Euclidean action satisfying coercivity $S_E[\psi] \geq C\|\psi\|_{\mathcal{P}}^\alpha - D$ for $\alpha > 2$. Define the cylindrical measures:
+\begin{equation}
+\mu_N(E) := \frac{1}{Z_N} \int_E e^{-S_E[\psi_N]} d\nu_{\mathcal{E}}[\psi_N]
+\end{equation}
+for finite-dimensional projections $\psi_N$ onto the first $N$ eigenmodes.
+
+Then there exists a unique Radon measure $\mu_{\mathrm{eff}}$ on the path space $\mathcal{P}$ such that $\mu_N \xrightarrow{\text{weak}} \mu_{\mathrm{eff}}$ as $N \to \infty$.
+
+\begin{proof}
+\input{proofM1LemmaEffectiveMeasureExistence}
+\end{proof}
+
+\textbf{Reference:} \cite{glimmJaffe1987quantum}, ``Quantum Physics: A Functional Integral Point of View,'' Chapter 8.
+\end{lemma}
+
+\begin{lemma}[Countable Additivity of $\mu_{\mathrm{eff}}$]
+\label{lem:countableAdditivity}
+The weak limit $\mu_{\mathrm{eff}}$ of cylindrical measures $\{\mu_N\}$ is countably additive on the Borel $\sigma$-algebra of $\mathcal{P} = C([0,\beta], \mathcal{H})$.
+
+\begin{proof}
+\input{proofALemmaCountableAdditivity}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Mass Gap Stability in Interacting Theory]
+\label{lem:massGapStability}
+Let $H_{\text{int}} = -\Delta_\mu + V''(|\psi_0|^2) + \delta V$ where $\delta V$ represents interaction corrections. Under condition (V2) with $V''(s) \geq \lambda_0 > 0$, the mass gap satisfies:
+\begin{equation}
+m_{\text{gap}}(H_{\text{int}}) \geq \frac{1}{2} m_{\text{gap}}(-\Delta_\mu + \lambda_0)
+\end{equation}
+provided $\|\delta V\|_\infty \leq \frac{1}{2} m_{\text{gap}}(-\Delta_\mu + \lambda_0)$.
+
+\begin{proof}
+\input{proofM1LemmaMassGapStability}
+\end{proof}
+\end{lemma}
+
+\subsubsection{Rigorous Construction of the Infinite-Dimensional Measure}
+
+\begin{theorem}[Infinite-Dimensional Gaussian Measure on Configuration Space]
+\label{thm:infiniteDimensionalMeasureConstruction}
+
+Let $\mathcal{H} = L^2(X, \mu; \mathbb{C}^n)$ with inner product 
+$\langle \psi, \phi \rangle = \int_X \overline{\psi(x)} \phi(x) d\mu(x)$.
+
+The quadratic functional
+\[
+S_0[\psi] := \langle A \psi, \psi \rangle + \int_X V(|\psi|^2) d\mu,
+\]
+where $A$ is the self-adjoint Laplacian (Theorem \ref{thm:laplacianProperties}), 
+induces a Gaussian measure on $\mathcal{H}$ via Kolmogorov extension:
+
+For finite-dimensional projections $\pi_N$ onto the first $N$ eigenfunctions 
+$\{e_1, \ldots, e_N\}$, define:
+\[
+d\nu_N(\psi_N) := \mathcal{Z}_N^{-1} \exp\left(-\int_X V(|\psi_N(x)|^2) d\mu\right) 
+\prod_{k=1}^N d\psi_k,
+\]
+where $\mathcal{Z}_N$ is computed via zeta-function regularization 
+(Theorem \ref{thm:heatKernelAsymptotics}).
+
+The infinite-dimensional measure is:
+\[
+\mathcal{D}\psi := \lim_{N \to \infty} d\nu_N(\psi_N) \otimes d\nu_\perp,
+\]
+where $d\nu_\perp$ is the Gaussian on $\mathcal{H}_\perp^N$ with covariance 
+$(A|_{\mathcal{H}_\perp^N})^{-1}$ (well-defined by spectral decomposition).
+
+By Kolmogorov extension theorem, this limit exists and is unique.
+
+The partition function $\mathcal{Z} = \lim_{N \to \infty} \mathcal{Z}_N$ is finite 
+because $\sum_{k=1}^\infty 1/\lambda_k^2 < \infty$ (Weyl asymptotics with $d_s = 4$).
+\end{theorem}
+
+\begin{remark}[Functional Derivative and Wick Rotation Analyticity]
+
+Under the constructed measure, functional derivatives are defined weakly:
+\[
+\frac{\delta S[\psi]}{\delta \psi_a^*(x)} := -A\psi_a(x) + \frac{\partial V}{\partial |\psi|^2} 
+\overline{\psi_a(x)}/|\psi|^2.
+\]
+
+Wick rotation is valid because $S[\psi]$ is Hermitian, and its complex extension 
+satisfies uniform bounds:
+\[
+|S[\psi(t + i\tau)]| \leq C(E_0)(1 + \|\psi\|_{L^2}^2)
+\]
+for all $\tau \in [0, \beta]$, $\|\psi\|_{L^2} \leq E_0$. 
+This justifies Fubini's theorem in the complex plane.
+\end{remark}
+
+\begin{definition}[Functional Derivative Domain (Canonical)]
+\label{def:functionalDerivativeDomainCanonical}
+Let $\mathcal{C} := H^{1,2}(X, \mu) \cap L^4(X, \mu; \mathbb{C}^n)$ be the configuration space with both Sobolev and $L^4$ regularity. The action functional $S: \mathcal{C} \to [0, \infty)$ is defined by:
+\[
+S[\psi] := \int_X \left[ |\nabla \psi|^2 + V(|\psi|^2) \right] d\mu(x),
+\]
+where $V$ is the strictly convex potential from Axiom II.
+
+The functional derivative domain is:
+\[
+\text{Dom}(\delta S) := \left\{ \psi \in \mathcal{C} : \forall \eta \in \mathcal{C}, \quad \lim_{\epsilon \to 0} \frac{S[\psi + \epsilon \eta] - S[\psi]}{\epsilon} = \int_X \frac{\delta S}{\delta \psi^*} \cdot \eta \, d\mu(x) \text{ exists} \right\}.
+\]
+
+The functional derivative operator is:
+\[
+\frac{\delta S}{\delta \psi_a^*}(x) := -\Delta \psi_a(x) + 2V'(|\psi|^2) \overline{\psi_a(x)}/|\psi|^2,
+\]
+where $\Delta$ is the Laplacian associated with the Dirichlet form $\mathcal{E}$. For $\psi \in H^{1,2}(X) \cap L^4(X)$, the derivative is defined as an element of $L^2(X)$ by Sobolev embedding and polynomial growth of $V$.
+\end{definition}
+
