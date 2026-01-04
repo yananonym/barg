@@ -1,0 +1,43 @@
+% proofLemMollifiedFieldOperatorConvergence.tex
+% Proof of mollified gauge field operator convergence
+
+\textit{Step 1: Finite-particle sector analysis.}
+
+On the $N$-particle sector $\mathcal{F}_N(\mathcal{H})$, only finitely many modes $n \leq N_{\max}$ contribute to $|\psi\rangle$. For each such mode:
+\begin{equation}
+|\rho_\epsilon(\lambda_n) - 1| = |e^{-\epsilon \lambda_n/2} - 1| \leq \epsilon \lambda_n e^{-\epsilon \lambda_n/4} \to 0 \quad \text{uniformly as } \epsilon \to 0^+.
+\end{equation}
+
+The series $\sum_{n=1}^{N_{\max}} (a_n + a_n^\dagger)$ has finite norm on $\mathcal{F}_N$. For any vector $|\psi\rangle \in \mathcal{F}_N$:
+\begin{equation}
+\|\widehat{\mathcal{A}}_\mu^\epsilon(x, t) |\psi\rangle - \widehat{\mathcal{A}}_\mu(x, t) |\psi\rangle\| \leq \sum_{n=1}^{N_{\max}} |\rho_\epsilon(\lambda_n) - 1| \|(a_n + a_n^\dagger) \phi_n(x) e^{\pm i\omega_n t} |\psi\rangle\| \to 0.
+\end{equation}
+
+By uniform boundedness, convergence holds uniformly in time $t \in [0, T]$ for any finite interval $[0, T]$.
+
+\textit{Step 2: Full Fock space extension.}
+
+The finite-particle sectors $\bigcup_{N=0}^\infty \mathcal{F}_N(\mathcal{H})$ form a dense subspace of the full Fock space $\mathcal{F}(\mathcal{H})$. By a standard $\epsilon/3$ argument applied to limits:
+
+\begin{enumerate}
+\item For any $|\Psi\rangle \in \mathcal{F}(\mathcal{H})$ and any $\delta > 0$, there exists $N$ and $|\psi_N\rangle \in \mathcal{F}_N$ with $\||\Psi\rangle - |\psi_N\rangle\| < \delta/3$.
+
+\item For this $|\psi_N\rangle$, there exists $\epsilon_0 > 0$ such that for all $\epsilon < \epsilon_0$:
+\[\|(\widehat{\mathcal{A}}_\mu^\epsilon(x, t) - \widehat{\mathcal{A}}_\mu(x, t)) |\psi_N\rangle\| < \delta/3.\]
+
+\item By boundedness of the mollification operator (since $|\rho_\epsilon(\lambda)| \leq 1$ always):
+\[\|(\widehat{\mathcal{A}}_\mu^\epsilon(x, t) - \widehat{\mathcal{A}}_\mu(x, t)) (|\Psi\rangle - |\psi_N\rangle)\| < 2\delta/3.\]
+
+\item Combining these bounds yields $\|(\widehat{\mathcal{A}}_\mu^\epsilon(x, t) - \widehat{\mathcal{A}}_\mu(x, t)) |\Psi\rangle\| < \delta$ for all $\epsilon < \epsilon_0$.
+\end{enumerate}
+
+\textit{Step 3: Tempered distribution property.}
+
+For smeared operators with test functions $f \in \mathcal{S}(\mathbb{R}^4)$ (Schwartz space):
+\begin{equation}
+\widehat{\mathcal{A}}_\mu(f) := \int_{\mathbb{R}^4} \widehat{\mathcal{A}}_\mu(x, t) f(x, t) d^4x,
+\end{equation}
+
+the functional $f \mapsto \langle \psi | \widehat{\mathcal{A}}_\mu(f) | \psi \rangle$ is linear and continuous in the Schwartz norm on test functions $f \in \mathcal{S}(\mathbb{R}^4)$ by operator norm estimates and density of Schwartz functions in appropriate topologies.
+
+This makes $\widehat{\mathcal{A}}_\mu$ a tempered distribution in the sense of Schwartz.

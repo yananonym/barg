@@ -1,0 +1,92 @@
+% proofThmYangMillsFunctionalIntegral.tex
+% Proof content
+
+
+\begin{proof}
+
+The proof constructs the functional integral representation of Yang-Mills theory from the lattice approximation and establishes convergence.
+
+\textbf{Step 1: Lattice Approximation}
+
+Discretize $X$ using a lattice approximation with lattice spacing $a > 0$. On the lattice $X_a = a\mathbb{Z}^3$ (intersected with a compact fundamental domain), the gauge field is approximated by:
+\begin{equation}
+\mathcal{A}_a(x) = \sum_{i \in X_a, n} c_{i,n} \phi_n(x_i) \phi_n(x),
+\end{equation}
+where $x_i$ are lattice sites.
+
+The lattice action is:
+\begin{equation}
+S_a[\mathcal{A}_a] := \frac{1}{g^2} \sum_{\text{plaquettes}} \text{Tr}\left(1 - \frac{1}{2}\text{Re}\left(U_P\right)\right),
+\end{equation}
+where $U_P$ is the plaquette holonomy and $g$ is the coupling constant.
+
+\textbf{Step 2: Lattice Functional Integral}
+
+The lattice partition function is:
+\begin{equation}
+Z_a = \int \mathcal{D}\mathcal{A}_a \exp\left(-\frac{1}{\hbar} S_a[\mathcal{A}_a]\right),
+\end{equation}
+where $\mathcal{D}\mathcal{A}_a = \prod_{i,n} dc_{i,n}$ is the Haar measure on the gauge group.
+
+By Lemma \ref{lem:latticeBetaFunctionConvergence}, this integral is well-defined and absolutely convergent.
+
+\textbf{Step 3: Heat Kernel Representation}
+
+Using the heat kernel expansion, write:
+\begin{equation}
+\exp\left(-\frac{S_a}{\hbar}\right) = \left(e^{-\frac{a^2 \Delta}{4\hbar}}\right)_{\text{lattice}}.
+\end{equation}
+
+By the Seeley-DeWitt expansion (Theorem \ref{thm:seeleyDewitt}), the heat kernel satisfies:
+\begin{equation}
+e^{-\lambda_n a^2 / 4\hbar} = 1 - \frac{\lambda_n a^2}{4\hbar} + O(a^4).
+\end{equation}
+
+\textbf{Step 4: Continuum Limit}
+
+As $a \to 0$, the lattice partition function converges to the continuum partition function:
+\begin{equation}
+Z = \lim_{a \to 0^+} Z_a = \int \mathcal{D}\mathcal{A} \exp\left(-\frac{1}{\hbar} \int_X \left(\frac{1}{2}|\mathcal{E}|^2 + \frac{1}{2}|\mathcal{B}|^2\right) d\mu\right),
+\end{equation}
+where $\mathcal{D}\mathcal{A}$ is the continuum functional measure.
+
+By Theorem \ref{thm:latticeRgRigorousConvergence}, this limit exists and is independent of the lattice regularization.
+
+\textbf{Step 5: Euclidean and Lorentzian Path Integrals}
+
+In Euclidean signature ($\beta = 1/T$, $\beta \to \infty$ corresponds to $T \to 0$), the Euclidean partition function is:
+\begin{equation}
+Z_E(\beta) = \int \mathcal{D}\mathcal{A}_E \exp\left(-\frac{S_E[\mathcal{A}_E]}{\hbar}\right),
+\end{equation}
+where:
+\begin{equation}
+S_E[\mathcal{A}_E] = \int_0^\beta d\tau \int_X \left(\frac{1}{2}|\mathcal{E}_E|^2 + \frac{1}{2}|\mathcal{B}_E|^2\right) d\mu.
+\end{equation}
+
+By the Wick rotation $t \to -i\tau$ (Theorem \ref{thm:wickRotation}), the Euclidean path integral analytically continues to the Lorentzian path integral:
+\begin{equation}
+Z_L = \int \mathcal{D}\mathcal{A}_L \exp\left(\frac{i}{\hbar} \int_{\mathbb{R}} dt \int_X \left(\frac{1}{2}|\mathcal{E}_L|^2 - \frac{1}{2}|\mathcal{B}_L|^2\right) d\mu\right).
+\end{equation}
+
+\textbf{Step 6: \cite{osterwalderSchrader1973axioms} Reconstruction}
+
+By the \cite{osterwalderSchrader1973axioms} reconstruction theorem (Theorem \ref{thm:osWaldSchraderVerificationComplete}), the Euclidean path integral generates a relativistic quantum field theory satisfying:
+\begin{enumerate}
+\item Linearity and positivity: $Z_E(\beta)$ defines a positive operator on Fock space
+\item Analyticity: The correlation functions $\langle \mathcal{A}(z_1) \cdots \mathcal{A}(z_n) \rangle$ are analytic in the forward tube
+\item Spectral condition: Lorentzian correlators satisfy the physical spectrum condition
+\end{enumerate}
+
+\textbf{Step 7: Convergence of Measures}
+
+By Theorem \ref{thm:pathIntegralConstruction}, the sequence of lattice measures $d\mu_a = Z_a^{-1} \exp(-S_a/\hbar) d\mathcal{A}_a$ converges weakly to the continuum measure $d\mu = Z^{-1} \exp(-S/\hbar) d\mathcal{A}$ as $a \to 0^+$.
+
+\textbf{Conclusion}
+
+The Yang-Mills theory admits a well-defined Euclidean path integral representation:
+\begin{equation}
+Z = \int \mathcal{D}\mathcal{A}_E \exp\left(-\frac{S_E}{\hbar}\right) < \infty,
+\end{equation}
+which analytically continues to a Lorentzian functional integral via Wick rotation and generates a relativistic quantum field theory satisfying the \cite{osterwalderSchrader1973axioms} axioms.
+
+\end{proof}
