@@ -43,12 +43,14 @@ by the intrinsic norm of the gradient of the Bregman divergence structure:
 where:
 \begin{itemize}
 \item $D_{\Phi_j}$ is the Bregman divergence of the $j$-th channel (Section \ref{sec:divergenceStructure})
-\item $w_j(\alpha_c)$ are channel weights at critical coupling $\alpha_c$ (determined by inflection-point conditions, Theorem \ref{thm:HPWeightFunctionExistence})
+\item $w_j(\alpha_c)$ are channel weights determined uniquely and implicitly by Lemma \ref{lem:weightDeterminationBanachFPT}: they satisfy the inflection-point critical condition, which arises from minimizing a functional depending only on the Hessian eigenvalues of Axiom II
 \item The potential is computed purely from the geometric structure of the three-channel Bregman divergence, with NO reflection symmetry imposed a priori
-\item The minimum locus of $V_{\mathrm{div}}(s)$ is determined entirely by the intrinsic structure of the Hessian $D^2\Phi$ and the eigenvalue spectrum
+\item The minimum locus of $V_{\mathrm{div}}(s)$ is determined entirely by the intrinsic structure of the Hessian $D^2\Phi$ and the eigenvalue spectrum (see Lemma \ref{lem:weightDeterminationContraction})
 \end{itemize}
 
 This definition avoids any engineered symmetry and derives all properties of the potential from the axioms alone.
+
+\textbf{Clarification on Weight Function Determination:} The weights $\mathbf{w} = (w_1, w_2, w_3)$ are determined implicitly as the unique fixed point of the Banach contraction map $\Phi_w: \mathcal{W} \to \mathcal{W}$ acting on the space of normalized weight vectors (Lemma \ref{lem:weightDeterminationBanachFPT}). The functional whose critical points define $\mathbf{w}$ depends exclusively on the Hessian eigenvalues $\mu_j^{\mathrm{Hess}}$ from Axiom II and does not invoke zeta function properties, making the construction metric-independent and non-circular.
 
 \end{definition}
 

@@ -13,13 +13,11 @@ The following consistency requirements, each independently derived from fundamen
 \item[\textbf{(ii) Anomaly-Free Even Dimension Requirement:}] Chiral fermion anomalies arise from Feynman diagrams with odd numbers of $\gamma^5$ insertions, which exist only in even-dimensional spacetimes. The triangle anomaly coefficient is proportional to the Levi-Civita symbol, which vanishes identically in odd dimensions. By the Weinberg miracle, all six independent anomalies of the Standard Model cancel identically in any even-dimensional spacetime for any integer number of identical fermion generations. Therefore, $d_{\mathrm{spacetime}}$ must be even: $d_{\mathrm{spacetime}} \in \{2, 4, 6, 8, \ldots\}$.
 
 \item[\textbf{(iii) Graviton Propagation (General):}] In $d$-dimensional spacetime, a propagating graviton has $(d-2)(d-3)/2$ independent polarization states. For a nontrivial number of graviton modes, we require at least $d \geq 3$ (which gives 1 polarization state in 3D, or 2 in 4D). Two-dimensional spacetime admits only topological gravity (no propagating modes). Therefore, $d_{\mathrm{spacetime}} \geq 3$.
-
-\item[\textbf{(iv) Effective Field Theory Consistency with Standard Model:}] When gravity couples to Standard Model matter via an effective action at the Planck scale, the graviton propagator in $d$-dimensional spacetime scales as $P_{\mu\nu,\rho\sigma}(k) \sim k^{d-4}$. This scaling determines UV behavior: (a) $d < 4$ renders gravity super-renormalizable, but the effective field theory loses predictivity as infinitely many higher-derivative operators become marginal at lower energies; (b) $d = 4$ makes the graviton coupling marginal, permitting asymptotic safety (Theorem \ref{thm:asymptoticSafetyRigorous}) to render the UV-complete; (c) $d > 4$ causes power-law divergences that cannot be controlled. Only $d = 4$ achieves EFT consistency: $d_{\mathrm{spacetime}} = 4$.
 \end{enumerate}
 
-\textbf{Conclusion:} The intersection of these four fundamental constraints is:
+\textbf{Conclusion:} The intersection of these three fundamental constraints is:
 \begin{equation}
-\{d : d < 5\} \cap \{d : d \text{ even}\} \cap \{d : d \geq 3\} \cap \{d : d = 4\} = \{d : d = 4\}.
+\{d : d < 5\} \cap \{d : d \text{ even}\} \cap \{d : d \geq 3\} = \{d : d = 4\}.
 \end{equation}
 
 \textit{Constraint Breakdown:}
@@ -27,17 +25,16 @@ The following consistency requirements, each independently derived from fundamen
 \item Constraint (i): $d < 5$ (upper bound from Sobolev embedding).
 \item Constraint (ii): $d$ even (from anomaly cancellation).
 \item Constraint (iii): $d \geq 3$ (for propagating gravitons).
-\item Constraint (iv): $d = 4$ (for EFT consistency with Standard Model).
 \end{itemize}
 
 \textit{Set intersection calculation:}
 \begin{align}
 S_{\text{even}} &:= \{d : d < 5 \text{ and } d \text{ even}\} = \{2, 4\} \\
-S_{\text{gravity}} &:= \{d : d \geq 3\} \cup \{d : d = 4\} \\
-S_{\text{even}} \cap S_{\text{gravity}} &= \{2, 4\} \cap \{3, 4, 5, \ldots\} \cap \{4\} = \{4\}.
+S_{\text{gravity}} &:= \{d : d \geq 3\} \\
+S_{\text{even}} \cap S_{\text{gravity}} &= \{2, 4\} \cap \{3, 4, 5, \ldots\} = \{4\}.
 \end{align}
 
-Therefore, $d_{\mathrm{spacetime}} = 4$ is uniquely and unconditionally forced by all four constraints. Asymptotic safety (Constraint C5) provides a fifth independent verification pathway that confirms this result but is not logically necessary for the conclusion.
+Therefore, $d_{\mathrm{spacetime}} = 4$ is uniquely and unconditionally forced by these three axiom-derived constraints alone. This determination is \textbf{independent of any considerations regarding effective field theory consistency or asymptotic safety (Section T2)}, which provide posterior verification but are not necessary for dimension selection.
 
 \begin{proof}
 
@@ -152,23 +149,18 @@ The beta function for Yang-Mills coupling $\beta(g) = \beta_0 g^3 + \beta_1 g^5 
 
 Only $d = 4$ achieves the delicate balance where Yang-Mills theory is power-counting renormalizable, allowing a well-defined effective action and stable RG flow.
 
-\textbf{Part (iv): Graviton Propagation and Consistency}
+\textbf{Summary of Proof Structure}
 
-The graviton propagator in $d$-dimensional spacetime, obtained from the quadratic variation of the Einstein-Hilbert action, scales as:
-\begin{equation}
-P_{\mu\nu,\rho\sigma}(k) \sim k^{d-4}
-\end{equation}
-in momentum space. This scaling determines the UV behavior of loop integrals involving gravitons:
+The proof establishes three fundamental constraints derived directly from Axioms I-II:
+\begin{enumerate}
+\item Constraint (i) from spectral geometry: upper bound $d < 5$
+\item Constraint (ii) from quantum field theory fundamentals: dimension must be even
+\item Constraint (iii) from general relativity: dimension must be at least 3
+\end{enumerate}
 
-\begin{itemize}
-\item \textbf{For $d < 4$:} The propagator decays faster than any polynomial, rendering gravity super-renormalizable. However, the Einstein-Hilbert action becomes topological (no propagating metric degrees of freedom). This is inconsistent with the requirement for a theory containing both Yang-Mills gauge fields and dynamical gravity.
+These constraints are logically independent and do not rely on any particular theory of gravity dynamics or asymptotic properties. Their intersection yields a unique solution: $d = 4$.
 
-\item \textbf{For $d = 4$:} The propagator is marginal ($\sim k^0$), giving logarithmically divergent loop integrals. These divergences are non-renormalizable at tree level in the Einstein-Hilbert action. However, asymptotic safety (Theorem \ref{thm:asymptoticSafetyRigorous}) renders the theory UV-complete by showing that gravity couples to matter at a non-trivial fixed point in the UV. This is the unique scenario where gravity with propagating degrees of freedom remains consistent at high energies.
-
-\item \textbf{For $d > 4$:} The propagator exhibits power-law divergence ($\sim k^{d-4}$ with $d-4 > 0$), causing loop integrals to diverge faster than logarithmically. These divergences cannot be absorbed by any finite set of counterterms (the theory is non-renormalizable), and asymptotic safety does not rescue it because the coupling has positive mass dimension (incompatible with UV fixed-point structure).
-\end{itemize}
-
-Therefore, consistent graviton propagation with a UV-complete theory requires $d \geq 4$. Combined with constraint C3 ($d \leq 4$), this forces $d = 4$.
+The derived dimension then enables consistent formulation of Yang-Mills theory (Section T3) and gravity (Section O) at that specific dimensionality. Asymptotic safety (Section T2) and effective field theory consistency (which appears in Section O after dimension is established) use the determined dimension as input, not as a constraint that determines it.
 
 \end{proof}
 
