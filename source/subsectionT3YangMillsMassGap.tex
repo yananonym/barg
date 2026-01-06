@@ -8,11 +8,16 @@ The mass gap proof has the following rigorously-verified logical structure:
 
 \textbf{Primary Claim:} Under Axioms I-II and the emergent spacetime structure (Sections A-L), the Yang-Mills theory on $\mathbb{R}^4$ admits a positive spectral gap $\Delta_{\mathrm{YM}} > 0$.
 
-\textbf{Critical Dependency Note:} Both Mechanisms M2 and M3 depend on the spacetime dimension being $d = 4$. This dimension is derived in Section K exclusively from three axiom-derived constraints (C1: smooth metric emergence requiring $Q < 4$; C3: chiral anomaly cancellation requiring odd $Q$; C4: graviton propagation requiring $Q \geq 3$).
+\textbf{Critical Dependency Note:} Both Mechanisms M2 and M3 depend on the spacetime dimension being $d = 4$. This dimension is derived in Section K (Lemma \ref{lem:dimensionUnicityFourConstraints}) exclusively from three axiom-derived constraints:
+\begin{enumerate}
+\item \textbf{Constraint (i):} Hölder regularity from Sobolev embedding: $Q < 4$
+\item \textbf{Constraint (ii):} Anomaly-free even dimension requirement: $d$ even
+\item \textbf{Constraint (iii):} Graviton propagation existence: $d \geq 3$
+\end{enumerate}
 
-Importantly, the dimension uniqueness proof in Lemma \ref{lem:dimensionUnicityFromAxioms} is \textit{independent of} Yang-Mills renormalizability (C2 in older formulations), which is a quantum field theory convention rather than an axiom-derived constraint. Thus:
+Importantly, these three constraints are \textit{independent of} asymptotic safety (Section T2), effective field theory consistency arguments, or any Yang-Mills renormalizability requirements. Thus:
 \begin{itemize}
-\item The dimension $d = 4$ is \textit{unconditionally} derived from Axioms I-II (Lemma \ref{lem:dimensionUnicityFromAxioms}).
+\item The dimension $d = 4$ is \textit{unconditionally} derived from Axioms I-II (Lemma \ref{lem:dimensionUnicityFourConstraints}).
 \item Mechanisms M2 and M3 depend on this axiom-derived dimension, making them \textit{unconditional} proofs of the mass gap.
 \item The Yang-Mills renormalizability matching (Lemma \ref{lem:yangMillsRenormalizabilityConsistency}) is an a posteriori consistency check, not a logical requirement.
 \item The mass gap proof is robust: it does not depend on external QFT assumptions or convention-based criteria.
