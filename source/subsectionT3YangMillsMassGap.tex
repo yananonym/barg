@@ -1,12 +1,22 @@
 % sectionYYangMillsExistenceMassGap.tex
 % Section content
 
-\begin{remark}[Logical Status of Yang-Mills Mass Gap Proof]
+\begin{remark}[Logical Status of Yang-Mills Mass Gap Proof: Compact vs. Flat Space]
 \label{rem:YMLogicalStatus}
 
-The mass gap proof has the following rigorously-verified logical structure:
+The mass gap proof has the following rigorously-verified logical structure with two distinct scenarios:
 
-\textbf{Primary Claim:} Under Axioms I-II and the emergent spacetime structure (Sections A-L), the Yang-Mills theory on $\mathbb{R}^4$ admits a positive spectral gap $\Delta_{\mathrm{YM}} > 0$.
+\textbf{Scenario A (Unconditional): Yang-Mills Gap on Emergent Compact Manifold}
+
+Under Axioms I-II and the emergent spacetime structure (Sections A-L), Yang-Mills theory on the emergent compact spacetime manifold $(X_L, g_L, \mu_L)$ admits a positive spectral gap $\Delta_L > 0$. This is proven unconditionally via Mechanisms M2 and M3, which depend only on Sections A-K and do not require asymptotic safety (Section T2).
+
+\textbf{Scenario B (Conditional on T2): Yang-Mills Gap on Flat $\mathbb{R}^4$ (Clay Prize)}
+
+Extension of the gap to flat Euclidean space $\mathbb{R}^4$ (the formulation of the Clay Millennium Prize) requires the thermodynamic limit $L \to \infty$. This extension crucially depends on determining the confinement scale $\Lambda_{\mathrm{QCD}}$ from the asymptotic safety fixed point (Section T2). Thus:
+\begin{itemize}
+\item If T2 is proven: The flat space gap $\Delta_{\mathbb{R}^4} > 0$ is rigorously established via dimensional transmutation.
+\item If T2 is unproven: The compact manifold gap stands alone as an unconditional result.
+\end{itemize}
 
 \textbf{Critical Dependency Note:} Both Mechanisms M2 and M3 depend on the spacetime dimension being $d = 4$. This dimension is derived in Section K (Lemma \ref{lem:dimensionUnicityFourConstraints}) exclusively from three axiom-derived constraints:
 \begin{enumerate}
@@ -597,13 +607,18 @@ where $M_{\text{QCD}} = M_{\text{ref}} \exp(-2\pi/\beta_0 \alpha^*)$ depends onl
 
 \end{lemma}
 
-\begin{theorem}[Yang-Mills Mass Gap via Thermodynamic Limit
-             (Complete Resolution)]
+\begin{theorem}[Yang-Mills Mass Gap via Thermodynamic Limit (Conditional on Asymptotic Safety)]
 \label{thm:YMGapThermodynamicLimitComplete}
 
-In the divergence-first framework, the Yang-Mills mass gap extends from
-the emerged compact manifold to flat Euclidean $\mathbb{R}^4$ via a
-rigorous thermodynamic limit. The three essential mechanisms are:
+In the divergence-first framework, the Yang-Mills mass gap can be established in two scenarios:
+
+\begin{enumerate}
+\item \textbf{Unconditional (Compact Manifold):} The gap $\Delta_L > 0$ is proven for the emergent compact spacetime $(X_L, g_L, \mu_L)$ via Mechanisms M2 and M3, using only Sections A-K. This requires no additional assumptions.
+
+\item \textbf{Conditional (Flat $\mathbb{R}^4$, Clay Prize):} Extension to flat Euclidean $\mathbb{R}^4$ via thermodynamic limit requires the asymptotic safety result (Section T2) to determine the confinement scale $\Lambda_{\mathrm{QCD}}$. This theorem establishes the second scenario: assuming T2 is valid, the mass gap extends to flat space.
+\end{enumerate}
+
+\textbf{Main Result (Assuming Asymptotic Safety):} Given that the asymptotic safety fixed point exists and is unique (Section T2), the Yang-Mills mass gap extends from the emerged compact manifold to flat Euclidean $\mathbb{R}^4$ via a rigorous thermodynamic limit. The essential mechanisms are:
 
 \begin{enumerate}
 
@@ -655,12 +670,14 @@ limit is flat Euclidean space:
 \[\lim_{L \to \infty} (X_L, L^{-2} g_L) = (\mathbb{R}^4, g_{\mathrm{Euclidean}})
 \quad \text{in Gromov-Hausdorff topology}.\]
 
-\textbf{Step 2: Dimensional Transmutation from RG Fixed Point (Theorem B2)}
+\textbf{Step 2: Dimensional Transmutation from RG Fixed Point (Theorem B2) [REQUIRES SECTION T2]}
+
+\textbf{Critical Dependency:} This step assumes that Section T2 (Asymptotic Safety, Theorem \ref{thm:existenceUniquenessInfinity}) has been proven. Given that result:
 
 From Theorem T2 (Asymptotic Safety), the UV-finite fixed-point coupling
 $\alpha^*$ is uniquely determined by the transversality of six constraint
 surfaces in the 9-dimensional coupling space. This fixed point is NOT an
-external input; it emerges from the divergence-first axioms.
+external input; it emerges from the divergence-first axioms combined with Section T2's constraint analysis.
 
 The confinement scale is defined via:
 \[\Lambda_{\mathrm{QCD}} := \exp\left( - \int_{\alpha^*}^{\infty}
@@ -668,11 +685,10 @@ The confinement scale is defined via:
 
 where $\beta(\alpha) = -b_1 \alpha^2 - b_2 \alpha^3 + \ldots$ is the
 asymptotic safety beta function (computable from the framework) and
-$k_*$ is the fixed-point energy scale.
+$k_*$ is the fixed-point energy scale derived from T2.
 
 By the standard RG matching theorem, this integral converges and
-defines $\Lambda_{\mathrm{QCD}}$ uniquely. No external assumption is
-needed; the confinement scale is a derived quantity.
+defines $\Lambda_{\mathrm{QCD}}$ uniquely. \textbf{However, if Section T2 is not valid, this step fails and $\Lambda_{\mathrm{QCD}}$ cannot be determined, leaving the flat space gap unproven.}
 
 \textbf{Step 3: Gap Decomposition and Uniform Lower Bound via Clustering (Lemma \ref{lem:confinementGapPersistence})}
 
