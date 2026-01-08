@@ -142,23 +142,3 @@ Thus, eigenfunction existence and regularity are \textit{derived consequences} o
 The Holder exponent $\alpha = 1 - Q/4$ depends continuously on $Q$. For any fixed $Q_0 < 4$ and $\epsilon > 0$, the regularity bounds $[\phi_n]_{C^{0,\alpha}} \leq C \lambda_n^{(Q+2\alpha)/4}$ hold uniformly for $Q \in (Q_0, 4-\epsilon)$. This ensures stability of eigenfunction regularity under small perturbations of dimension.
 
 \end{proof}
-
-\begin{remark}[Logical Order and Circularity Resolution]
-\label{rem:logicalorderandcircularityresolution}
-
-This lemma establishes that eigenfunction regularity appeared circular if metric properties are used in the derivation. This lemma eliminates that circularity by establishing:
-
-\textbf{Logical Sequence (Non-Circular):}
-\begin{enumerate}
-\item \textbf{Measure structure} (Axiom \ref{ax:polishSpace}): Polish space with Ahlfors regularity and Poincaré inequality.
-\item \textbf{Divergence structure} (Section B): Bregman divergence generating functional and divergence operator.
-\item \textbf{Dirichlet form} (Section C): Defined from divergence operator using measure-theoretic calculus only.
-\item \textbf{Laplacian} (via spectral theorem): Self-adjoint operator from Dirichlet form.
-\item \textbf{Eigenfunctions with Holder regularity} (this lemma): Heat kernel regularity gives Holder continuity for $Q < 4$.
-\item \textbf{Carre du Champ metric} (Section G): Constructed from eigenfunctions, now known to be Holder-continuous.
-\item \textbf{Riemannian structure} (Sections G-H): Metric, manifold structure, and causality all emerge from Carre du Champ.
-\end{enumerate}
-
-All step depends on later (steps, this) is the correct logical order. The dimension constraint $Q < 4$ emerges as a consequence.
-
-\end{remark}
