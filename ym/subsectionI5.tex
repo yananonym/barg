@@ -1,0 +1,91 @@
+% Part of sectionITemporalCausality.tex
+\subsection{Causal Structure and Temporal Ordering}
+
+\begin{definition}[Causal Ordering on Configuration Space]
+\label{def:pathCausalOrdering}
+
+For $\phi, \psi \in \Dom(T)$ (the domain of the temporal vector field $T[\cdot]$ from Definition \ref{def:temporalVectorFieldDomain}), Define a causal relation $\phi \prec \psi$ if there exists a continuous path $\gamma: [0,1] \to \Dom(T)$ with $\gamma(0) = \phi$ and $\gamma(1) = \psi$ such that:
+\begin{equation}
+\int_0^1 \langle T[\gamma(s)], \gamma'(s) \rangle_{\mathcal{H}} ds > 0,
+\end{equation}
+where $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ is the $L^2(X)$ inner product and the path derivative $\gamma'(s)$ is interpreted in the weak sense.
+\end{definition}
+
+\begin{lemma}[Causality is Acyclic]
+\label{lem:causalityAcyclic}
+
+The relation $\prec$ (Definition \ref{def:pathCausalOrdering}) is acyclic: there is no configuration $\psi$ such that $\psi \prec \psi$.
+
+\begin{proof}
+
+Suppose toward contradiction that $\psi \prec \psi$. Then there exists a closed path $\gamma: [0,1] \to \Dom(T)$ with $\gamma(0) = \gamma(1) = \psi$ such that:
+\begin{equation}
+\oint_\gamma \langle T[\gamma(s)], \gamma'(s) \rangle_{\mathcal{H}} ds > 0.
+\end{equation}
+
+By the divergence theorem on the path space (or equivalently, integration by parts), for a closed loop:
+\begin{equation}
+\oint_\gamma \langle T[\gamma(s)], d\gamma(s) \rangle = \int_{\text{interior}} \mathrm{div}(T) \, d\mu = 0
+\end{equation}
+if $T$ is a conservative vector field (derived from the temporal functional $\phi_0$). Since $T[\psi] = \nabla_{\min} \phi_0(\psi)$ is indeed a gradient field (by definition, Theorem \ref{thm:lapsePositivityFromDivergence}), the integral around any closed loop must vanish.
+
+This contradicts the positivity assumption. Therefore, no closed loop exists with positive integral, so $\psi \not\prec \psi$. \qed
+
+\end{proof}
+
+\end{lemma}
+
+\begin{lemma}[Causality is Transitive]
+\label{lem:causalityTransitive}
+
+If $\phi \prec \psi$ and $\psi \prec \chi$, then $\phi \prec \chi$.
+
+\begin{proof}
+
+By definition of $\prec$, there exist paths $\gamma_1: [0,1] \to \Dom(T)$ with $\gamma_1(0) = \phi$, $\gamma_1(1) = \psi$ and:
+\begin{equation}
+\Delta_1 := \int_0^1 \langle T[\gamma_1(s)], \gamma_1'(s) \rangle ds > 0,
+\end{equation}
+and $\gamma_2: [0,1] \to \Dom(T)$ with $\gamma_2(0) = \psi$, $\gamma_2(1) = \chi$ and:
+\begin{equation}
+\Delta_2 := \int_0^1 \langle T[\gamma_2(s)], \gamma_2'(s) \rangle ds > 0.
+\end{equation}
+
+Concatenate the paths: define $\gamma: [0,2] \to \Dom(T)$ by:
+\begin{equation}
+\gamma(s) := \begin{cases} \gamma_1(2s) & \text{for } s \in [0, 1/2] \\ \gamma_2(2s-1) & \text{for } s \in [1/2, 1] \end{cases}
+\end{equation}
+
+(Reparameterize to $[0,1]$ via $\tilde{\gamma}(s) = \gamma(2s)$ for $s \in [0,1]$.)
+
+The concatenated path satisfies $\gamma(0) = \phi$ and $\gamma(1) = \chi$. The integral becomes:
+\begin{equation}
+\int_0^1 \langle T[\gamma(s)], \gamma'(s) \rangle ds = \Delta_1 + \Delta_2 > 0.
+\end{equation}
+
+Thus $\phi \prec \chi$ via the concatenated path. \qed
+
+\end{proof}
+
+\end{lemma}
+
+\begin{theorem}[Temporal Ordering is a Strict Partial Order]
+\label{thm:causalityPartialOrder}
+
+The relation $\prec$ defines a strict partial order on $\Dom(T)$: it is irreflexive (Lemma \ref{lem:causalityAcyclic}), transitive (Lemma \ref{lem:causalityTransitive}), and asymmetric (i.e., $\psi \prec \phi$ implies $\phi \not\prec \psi$).
+
+The causal structure induces a partial temporal ordering on configuration space, with configurations partitioned into causally disconnected layers. This provides a rigorous foundation for causality in the divergence-first framework.
+
+\begin{proof}
+
+\noindent\textbf{Irreflexivity:} By Lemma \ref{lem:causalityAcyclic}, $\psi \not\prec \psi$ for all $\psi \in \Dom(T)$.
+
+\noindent\textbf{Transitivity:} By Lemma \ref{lem:causalityTransitive}, if $\phi \prec \psi$ and $\psi \prec \chi$, then $\phi \prec \chi$.
+
+\noindent\textbf{Asymmetry:} Suppose $\psi \prec \phi$. Then there exists a path $\gamma$ with positive temporal integral from $\psi$ to $\phi$. If also $\phi \prec \psi$, then the reversed path would have positive integral from $\phi$ to $\psi$, implying a positive integral around the loop, contradicting Lemma \ref{lem:causalityAcyclic}. Therefore, $\phi \not\prec \psi$.
+
+These three properties define a strict partial order.
+
+\end{proof}
+
+\end{theorem}
