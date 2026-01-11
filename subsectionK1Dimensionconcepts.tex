@@ -1,0 +1,65 @@
+% Part of sectionKDimensionUniqueness.tex
+\subsection{Dimension Concepts and Their Emergence}
+\label{subsec:dimensionConcepts}
+
+\noindent\textbf{CRITICAL NOTATIONAL CLARIFICATION (Read First)}
+
+Throughout this section, the employ a precise notational convention to avoid confusion between spatial and spacetime dimensions:
+
+\begin{center}
+\boxed{
+\begin{tabular}{ll}
+$Q$ & := Spatial dimension (Ahlfors dimension of Polish space $X$) \\
+$d$ & := Q + 1 $=$ Total spacetime dimension (after temporal direction emerges) \\
+\end{tabular}
+}
+\end{center}
+
+\noindent All five constraints below are stated in terms of both $Q$ and $d = Q + 1$. The constraints uniquely determine $Q = 3$ (spatial) and $d = 4$ (spacetime).
+
+\vspace{0.2cm}
+
+\begin{definition}[Notions of Dimension in divergence-first theory]
+\label{def:dimensions}
+The distinguish four fundamental notions of dimension, arising naturally in the emergence sequence:
+
+\begin{enumerate}
+\item \textbf{Ahlfors dimension} $Q$ is the exponent in Ahlfors regularity of the measure $\mu$ on the base Polish space $X$:
+\begin{equation}
+\mu(B_r(x)) \sim r^Q, \quad \text{with constants independent of } x \text{ and } r.
+\end{equation}
+This coincides with the Hausdorff dimension of $X$ under Axiom \ref{ax:polishSpace}.
+
+\item \textbf{Spectral dimension} $d_s$ is defined by the Weyl asymptotic law for the eigenvalue counting function $N(\lambda)$ of the self-adjoint operator $A$:
+\begin{equation}
+N(\lambda) := \#\{\text{eigenvalues} \leq \lambda\} \sim C_{\text{Weyl}} \lambda^{d_s/2} \quad \text{as } \lambda \to \infty.
+\end{equation}
+
+\item \textbf{Geometric dimension} $d_g$ is defined by volume growth of the emerged Riemannian metric $g$:
+\begin{equation}
+\text{Vol}_g(B_r(p)) \sim C_{\text{vol}} r^{d_g}, \quad \text{as } r \to 0^+.
+\end{equation}
+
+\item \textbf{Spacetime dimension} $d_{\mathrm{spacetime}}$ is the total number of independent coordinates (spatial plus temporal) in the four-dimensional spacetime after Lorentzian signature emergence.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[Dimension Consistency in the Emergence Sequence]
+\label{lem:dimensionConsistency}
+Under Axioms A1a--A1d (Section \ref{sec:axioms}) and the emergence sequence (Theorem \ref{thm:smoothManifoldEmergenceComplete}), the Ahlfors dimension, spectral dimension, and geometric dimension all coincide:
+\begin{equation}
+Q = d_s = d_g =: d_{\mathrm{spatial}}.
+\end{equation}
+When Lorentzian signature is imposed (Section \ref{sec:lorentzianGeometry}), the total spacetime dimension is $d_{\mathrm{spacetime}} = d_{\mathrm{spatial}} + 1 = d + 1$.
+
+\begin{proof}
+\input{proofKLemmaDimensionConsistency}
+\end{proof}
+\end{lemma}
+
+\input{proofKLemmaDimensionalIntegralityFromManifoldEmbedding}
+
+\input{proofKLemmaEffectiveDimensionFormulaHeatKernel}
+
+\input{proofKLemmaDimensionUnicityFourConstraints}
+
